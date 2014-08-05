@@ -11,8 +11,9 @@
 	
 """
 
-word = str(raw_input("Enter a word: ")).lower()
-print word
-if len(word) == 0:
-    print "NO WORD ENTERED"
-print("%s%s%say") % (word[1].upper(),word[2:],word[0])
+print('Welcome to the Pig Latin Translator!\n')
+word = str(raw_input("Enter a word, Yah Pig! : ")).lower()
+while len(word) < 2 or not word.isalpha():
+	word = str(raw_input("No can do. Another one : ")).lower()
+
+print("\nThats \'%s%s%say\' in Pig Latin!") % (word[1].upper(),word[2:],word[0])

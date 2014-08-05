@@ -11,13 +11,9 @@
 	
 """
 
-pyg = 'ay'
-original = raw_input('Enter a word:')
-if len(word) > 0 and word.isalpha():
-    word = original.lower()
-    first = word[0]
-    
-    new_word = word[1:] + first + pyg
-    print new_word
-else:
-    print 'empty'
+print('Welcome to the Pig Latin Translator!\n')
+word = str(raw_input("Enter a word, Yah Pig! : ")).lower()
+while len(word) < 2 or not word.isalpha():
+	word = str(raw_input("No can do. Another one : ")).lower()
+
+print("\nThats \'%s%s%say\' in Pig Latin!") % (word[1].upper(),word[2:],word[0])

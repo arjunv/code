@@ -11,6 +11,7 @@ Output: Results are downloaded and saved in the running location
 
 import os
 import re
+import sys
 import socket
 import urllib
 import urllib2
@@ -93,11 +94,13 @@ def exam_list_downloader(txtcource = 4):
 
 # Retrieve list of exams and exam ids from the server
     try:
-        list_req = urllib2.urlopen(url_list, timeout = 10)
+        list_req = urllib2.urlopen(url_list, timeout = 15)
     except urllib2.URLError as e:
         print "Can't connect to the network! Are you connected to the Internet?\n"    # something's wrong with the url!
+        sys.exit()
     except socket.timeout as e:
-        print "Well, they might be down. %r" % e    # they're down!
+        print "Well, Look's like they are down!"    # they're down!
+        sys.exit()
     else:    # now comes the fun part
         list_page_resp = list_req.read()
         # print list_page_resp[0:100]   # Uncomment to look at the html response
@@ -145,8 +148,10 @@ def pdf_downloader(register_number,exam_id,exam_name):
         # login_req = opener.open(url_login, data, timeout = 10)
     except urllib2.URLError as e:
         print "Can't connect to the network! Are you connected to the Internet?\n"    # something's wrong with the url!
+        sys.exit()
     except socket.timeout as e:
-        print "Well, they might be down. %r" % e    # surprise! surprise!
+        print "Well, Look's like they are down!"    # surprise! surprise!
+        sys.exit()
     else:    # all is well
 
 # Uncomment to look at the HTML from the login page and the cookie
@@ -164,9 +169,11 @@ def pdf_downloader(register_number,exam_id,exam_name):
         try:
             pdf_request = opener.open(url_pdf, timeout = 30)
         except urllib2.URLError as e:
-            print type(e)
+            print "Can't connect to the network! Are you connected to the Internet?\n"
+            sys.exit()
         except socket.timeout as e:
-            print "Server is down or taking too much time! %r" % e    # as they always are
+            print "Well, Look's like they are down!"    # as they always are
+            sys.exit()
         else:    # it worked! no idea how though!
         # Read pdf data from the server
             pdf_data = pdf_request.read()

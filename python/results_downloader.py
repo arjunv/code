@@ -70,10 +70,11 @@ def show_options(exam_list):
         print '  ', i, '  >  ', exm[0], ' - ', exm[1]
         i = i+1
     while 1:
-        choice = input('Select a choice from the exams list: ')
+        choice = int(raw_input('Select a choice from the exams list: '))
         if choice>0 and choice<i:
             return choice   # User input accepted
-        print 'Try again! ',
+        else:
+            print 'Try again! ',
 # End of User Input Function
 
 # Start of Exam List Downloader

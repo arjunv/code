@@ -88,7 +88,7 @@ def exam_list_downloader(txtcource = 4):
     """
 
 # Set URL for retrieving list of exam results in the selected Course.
-    url_list = 'http://202.88.252.21/CuPbhavan/curesultonline.php?txtcourse=%d' % txtcource
+    url_list = 'http://61.0.254.181/CuPbhavan/curesultonline.php?txtcourse=%d' % txtcource
 # Magic regex for finding urls and exam ids
     regex = re.compile('.+?res\_newregentry\.php\?id\=(.+?)\'.+?=2>(.+?)</a>')
 
@@ -129,9 +129,9 @@ def pdf_downloader(register_number,exam_id,exam_name):
     opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
 
 # URL List - University of Calicut
-    url_login = 'http://202.88.252.21/CuPbhavan/res_newregentry.php'
+    url_login = 'http://61.0.254.181/CuPbhavan/res_newregentry.php'
     # url_bypass = 'http://202.88.252.21/CuPbhavan/rs_newcheck.php'
-    url_pdf = 'http://202.88.252.21/CuPbhavan/cubtech7/sugrres.php'
+    url_pdf = 'http://61.0.254.181/CuPbhavan/cubtech7/sugrres.php'
 
 # Build post data to send to the server
     post_data = {
